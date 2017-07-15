@@ -7,6 +7,11 @@ names(data)<- c("Date","Time","Global_active_power","Global_reactive_power","Vol
 
 subdata<- subset(data, data$Date=="1/2/2007"| data$Date=="2/2/2007")
 
+# Set-up the png output with 480 x 480 pixelation
+png('Plot1.png', width = 480, height = 480)
+
 #Calling the hist function
 hist(as.numeric(as.character(subdata$Global_active_power)), col= "red", main= "Global Active Power", 
      xlab= "Global Active Power (Kilowatts)")
+
+dev.off()

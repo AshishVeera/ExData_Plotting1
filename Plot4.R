@@ -19,6 +19,8 @@ subdata<- subdata %>% mutate(Date= as.POSIXct(dmy_hms(as.character(paste(Date, T
                              Sub_metering_2= as.numeric(as.character(Sub_metering_2)),
                              Sub_metering_3= as.numeric(as.character(Sub_metering_3)))
 
+# Set-up the png output with 480 x 480 pixelation
+png('Plot4.png', width = 480, height = 480)
 
 #Creating Plot
 par(mfrow=c(2,2))
@@ -35,3 +37,5 @@ legend("topright", lty=1, col = c("black", "red", "blue"),
        legend = c("Sub_Metering_1", "Sub_Metering_2", "Sub_Metering_3"), cex=0.6)
 
 with(subdata, plot(Date,Global_reactive_power, type="l", xlab = "datetime", ylab = "Global_reactive_power"))
+
+dev.off()

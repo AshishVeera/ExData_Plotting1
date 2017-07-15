@@ -17,6 +17,9 @@ subdata<- subdata %>% mutate(Date= as.POSIXct(dmy_hms(as.character(paste(Date, T
                              Sub_metering_3= as.numeric(as.character(Sub_metering_3))) %>% 
   select(Date, Sub_metering_1, Sub_metering_2, Sub_metering_3)
 
+# Set-up the png output with 480 x 480 pixelation
+png('Plot3.png', width = 480, height = 480)
+
 #Creating plot
 with(subdata, plot(Date,Sub_metering_1, type="n", xlab = "", ylab = "Energy Sub Metering"))
 with(subdata, points(Date,Sub_metering_1, col="black", type="l"))
@@ -24,3 +27,4 @@ with(subdata, points(Date,Sub_metering_2, col="red", type="l"))
 with(subdata, points(Date,Sub_metering_3, col="blue", type="l"))
 legend("topright", lty=1, col = c("black", "red", "blue"), 
        legend = c("Sub_Metering_1", "Sub_Metering_2", "Sub_Metering_3"))
+dev.off()

@@ -13,7 +13,13 @@ subdata<- subset(data, data$Date=="1/2/2007"| data$Date=="2/2/2007")
 
 subdata<- subdata %>% mutate(Date= as.POSIXct(dmy_hms(as.character(paste(Date, Time)))))
 
+
+# Set-up the png output with 480 x 480 pixelation
+png('Plot2.png', width = 480, height = 480)
+
 #Calling the basic Plot function
 plot(subdata$Date,as.numeric(as.character(subdata$Global_active_power)),type="l",xlab="",
 ylab="Global Active Power (kilowatts)")
+
+dev.off()
 
